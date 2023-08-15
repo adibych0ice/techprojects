@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from employee.serializer import ProductSerializers
+from employee.serializer import EmployeeSerializers
 from .models import Employee
 from rest_framework import status
 
@@ -17,7 +17,7 @@ from rest_framework import status
 @api_view(['GET'])
 def Employees(request):
     queryset=Employee.objects.all()
-    serializer=ProductSerializers(queryset,many=True)
+    serializer=EmployeeSerializers(queryset,many=True)
     print(serializer.data)
     return Response(serializer.data)
 
@@ -29,19 +29,19 @@ def Employees_by_id(request):
         if managerId!=None:
             print(Employee.objects.filter(managerid=managerId))
             employee=get_list_or_404(Employee,managerid=managerId)
-            serializer=ProductSerializers(employee,many=True)
+            serializer=EmployeeSerializers(employee,many=True)
             return Response(serializer.data)
         elif employeeId!=None:
             print(Employee.objects.filter(employeeid=employeeId))
             employee=get_object_or_404(Employee,employeeid=employeeId)
-            serializer=ProductSerializers(employee)
+            serializer=EmployeeSerializers(employee)
             return Response(serializer.data)
         else:
             return Response('enter Employeeid')
     elif request.method=='PATCH':
         if employeeId!=None:
             employee=get_object_or_404(Employee,employeeid=employeeId)
-            serializer=ProductSerializers(employee,data=request.data,partial=True)
+            serializer=EmployeeSerializers(employee,data=request.data,partial=True)
             if serializer.is_valid(raise_exception=True):
                serializer.save()
             return Response(serializer.data)
@@ -52,7 +52,7 @@ def Employees_by_id(request):
                     "exitdate":datetime.date.today(),
                     "status":"N"
                 }
-                serializer=ProductSerializers(employee,data=data,partial=True)
+                serializer=EmployeeSerializers(employee,data=data,partial=True)
                 if serializer.is_valid(raise_exception=True):
                     serializer.save()
                 return Response(serializer.data)
@@ -65,7 +65,7 @@ def Employees_by_id(request):
 # def Employees_by_id(request,managerid):
 #         employee=get_object_or_404(Employee,managerid=id)
 #         if request.method=='GET':
-#             serializer=ProductSerializers(employee)
+#             serializer=EmployeeSerializers(employee)
 #             return Response(serializer.data)
 
 
