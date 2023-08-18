@@ -1,0 +1,45 @@
+type Query{
+    users: [User!]
+    user(id: ID): User
+}
+
+
+
+type User{
+    id: ID!
+    name: String!
+    age: Int!
+    height: Int! #Cannot be Null
+    isMarried: Boolean #Can be Null
+    friends: [User!] #This ensures that if a friend is there, he/she should be a user
+    videosPosted: [Videos!] #videosPosted field itself is not needed but Video being there is amust
+}
+#We use the ! in GraphQL to make the field necessary when querying. These details must be provided for the query
+#In short the ! in GraphQL makes the field non-nullable
+type Videos {
+    id: ID!
+    title: String!
+    description: String!
+}
+
+
+
+
+
+type Query{
+    diseases(filter: FieldofMedicine - {}):[DiseaseList!]
+
+}
+
+input FieldofMedicine{
+    MedicalField: String!
+    severity: LevelofSeverity
+}
+
+enum LevelofSeverity{
+    MILD
+    MODERATE
+    EMERGENCY
+}
+
+type 
