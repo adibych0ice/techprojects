@@ -1,0 +1,28 @@
+{
+  "name": "graphql-and-odata",
+  "version": "1.0.0",
+  "description": "my first foray into using graphql with node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adibych0ice/techprojects.git"
+  },
+  "author": "Aditya Nittala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adibych0ice/techprojects/issues"
+  },
+  "homepage": "https://github.com/adibych0ice/techprojects#readme",
+  "keywords": [
+    "graphql"
+  ],
+  "dependencies": {
+    "apollo-server": "^3.12.0",
+    "graphql": "^16.8.0",
+    "nodemon": "^3.0.1"
+  }
+}
