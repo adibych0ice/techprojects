@@ -6,19 +6,22 @@ const typeDefs = gql `
         name: String
         username: String
         age: Int
-        nationality: String
+        nationality: Nationality
+        friends: [User] #Fields can be nested inside one another
     }
 
     type Query{
         users: [User!]!
+        user(id: ID!): User! #This will allow for the selecting of certain users based on the ID providede. The ID MUST be provided
+        #The return type is User.
     }
 
     enum Nationality{
-        CANADA
-        USA
-        SPAIN
-        PAKISTAN
-        AUSTRALIA
+        American
+        Canadian
+        Spanish
+        Pakistani
+        Australian
     }
 `;
 
