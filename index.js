@@ -4,10 +4,13 @@ const { ApolloServer } = require("apollo-server"); // We are creating the Apollo
 */
 const { typeDefs } = require('./schema/typeDefs.js');
 // The typeDefs define the shape ofthe queries. 
-const resolvers = require('./schema/resolvers')
+
+const { resolvers } = require('./schema/resolvers.js')
 // The resolvers define how ApolloServer is supposed to even use that type definitions 
+
 const server = new ApolloServer({typeDefs, resolvers})
 //The Apollo Server instance must have typeDefs (which is the schema definition) and resolvers(that tell Apollo Server what to do with the Schema Defs.)
-server.listen().then(() => {
+
+server.listen().then(({ url }) => {
     console.log(`The API is running at: ${url}`);
 })

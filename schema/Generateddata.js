@@ -35,3 +35,5 @@ UserList = [
     "nationality": "Australian"
   }
 ]
+
+module.exports = { UserList }

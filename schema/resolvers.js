@@ -3,9 +3,11 @@ const UserList = require('./Generateddata')
 const resolvers = {
     Query: {
         users() {
-            return UserList
+            return UserList;
         }
     }
 }
 
-module.exports = { resolvers }
+module.exports = { 
+    resolvers 
+};
