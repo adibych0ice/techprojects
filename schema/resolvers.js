@@ -1,9 +1,9 @@
-const data = require('./Generateddata.json')
+const UserList = require('./Generateddata')
 
 const resolvers = {
     Query: {
         users() {
-            return data
+            return UserList
         }
     }
 }

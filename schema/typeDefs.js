@@ -14,3 +14,5 @@ const typeDefs = gql `
         friends
     }
 `;
+
+module.exports = { typeDefs }
