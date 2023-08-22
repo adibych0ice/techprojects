@@ -1,33 +1,34 @@
 UserList = [
   {
     "id": 1,
-    "name": "John Doe", 
+    "name": "John Doe",
     "username": "johndoe",
     "age": 35,
     "nationality": "American",
-    friends:[{
-      "id": 3,
-      "name": "Antonio Garcia",
-      "username": "antoniog", 
-      "age": 27,
-      "nationality": "Spanish"
-    },
-    {
-      "id": 4,
-      "name": "Muhammad Ali",
-      "username": "muhammadali",
-      "age": 42,
-      "nationality": "Pakistani"
-    }
-  ]
+    "friends": [
+      {
+        "id": 3,
+        "name": "Antonio Garcia",
+        "username": "antoniog",
+        "age": 27,
+        "nationality": "Spanish"
+      },
+      {
+        "id": 4,
+        "name": "Muhammad Ali",
+        "username": "muhammadali",
+        "age": 42,
+        "nationality": "Pakistani"
+      }
+    ]
   },
   {
-    "id": 2, 
+    "id": 2,
     "name": "Marie Smith",
     "username": "msmith",
     "age": 28,
     "nationality": "Canadian",
-    friends:[
+    "friends": [
       {
         "id": 4,
         "name": "Muhammad Ali",
@@ -39,7 +40,7 @@ UserList = [
   {
     "id": 3,
     "name": "Antonio Garcia",
-    "username": "antoniog", 
+    "username": "antoniog",
     "age": 27,
     "nationality": "Spanish"
   },
@@ -56,7 +57,14 @@ UserList = [
     "username": "chloej",
     "age": 19,
     "nationality": "Australian"
+  },
+  {
+    "name": "Carl Gendricky",
+    "username": "motherlode6969",
+    "age": 29,
+    "nationality": "Canadian",
+    "id": 6
   }
 ]
 
-module.exports = UserList 
+module.exports = UserList

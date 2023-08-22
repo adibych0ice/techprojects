@@ -27,6 +27,7 @@ const typeDefs = gql `
         Spanish
         Pakistani
         Australian
+        Greek
     }
 
     type Movies{
@@ -34,6 +35,34 @@ const typeDefs = gql `
         name: String!
         releaseyear: Int!
         isintheatres: Boolean!
+    }
+    input adduserinp{
+        name: String!
+        username: String!
+        age: Int = 21
+        nationality: Nationality = American
+        #We will not be referencing the Objects like in friends: [User]
+        #This is because we are creating a new entry. We are not querying 
+        #anything so we we will not be referencing anything
+    }
+    input addmovieinp{
+        name: String!
+        releaseyear: Int!
+        isintheatres: Boolean!
+    }
+
+    input updateuser{
+        id: ID!
+        newusername: String!
+        newuser_name: String!
+        updatedage: Int
+        updatedNationality: String
+    }
+
+    type Mutation{
+        adduser(input: adduserinp!): User
+        addmovie(input: addmovieinp!): Movies
+        updateuser(input: updateuser!): User!
     }
 `;
 
