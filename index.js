@@ -11,6 +11,20 @@ const { resolvers } = require('./schema/resolvers.js')
 const server = new ApolloServer({typeDefs, resolvers})
 //The Apollo Server instance must have typeDefs (which is the schema definition) and resolvers(that tell Apollo Server what to do with the Schema Defs.)
 
+// Connecting to Postgres
+
+const postgres = require("pg-promise")();
+
+const dbconnection = {
+    host: 'localhost',
+    port:5432,
+    database: 'postgres',
+    user: 'postgres',
+    password: 'Tachyon_9667'
+}
+
+const postgresdb = postgres(dbconnection)
+
 server.listen().then(({ url }) => {
     console.log(`The API is running at: ${url}`);
 })

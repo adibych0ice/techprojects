@@ -24,6 +24,10 @@ const resolvers = {
             const name = args.name
             const mov = _.find(MovieList,{name:String(name)})
             return mov
+        },
+
+        fromdb: () =>{
+            
         }
     },
 

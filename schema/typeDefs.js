@@ -1,5 +1,7 @@
 const { gql } = require("apollo-server");
 
+
+
 const typeDefs = gql `
     type User{
         id: ID!
@@ -12,13 +14,21 @@ const typeDefs = gql `
 
         favmovie: [Movies]
     }
-
+    type dbuser{
+        id: ID!
+        name: String!
+        email: String
+        address: String
+        birthdate: 
+    }
     type Query{
         users: [User!]!
         user(id: ID!): User! #This will allow for the selecting of certain users based on the ID providede. The ID MUST be provided
         #The return type is User.
         movies: [Movies!]!
         movie(name: String!): Movies!
+
+        dbusers: [dbuser!]!
     }
 
     enum Nationality{
