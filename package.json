@@ -21,9 +21,15 @@
     "graphql"
   ],
   "dependencies": {
+    "apollo-datasource": "^3.3.2",
     "apollo-server": "^3.12.0",
+    "dotenv": "^16.3.1",
     "graphql": "^16.8.0",
+    "knex": "^2.5.1",
     "lodash": "^4.17.21",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "pg": "^8.11.3",
+    "pg-promise": "^11.5.4",
+    "sequelize": "^6.32.1"
   }
 }

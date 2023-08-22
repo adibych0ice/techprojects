@@ -65,7 +65,9 @@ const typeDefs = gql `
         updatedreleaseyear: Int!
         currentshowingstatus: Boolean
     }
-
+    #The reason we add the input is because there can be multiple fields that may bee needed for this particular use case
+    #If we only need to add a simply argument, we can just mention it as 
+    #  mutation_name(argument: argumenttype(if it is simpole then we put String, Int, ID etc.)(If it is a more detailed type, then we sperately define it in input type))
     type Mutation{
         adduser(input: adduserinp!): User
         addmovie(input: addmovieinp!): Movies
