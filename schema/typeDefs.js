@@ -59,10 +59,18 @@ const typeDefs = gql `
         updatedNationality: String
     }
 
+    input updatemovie{
+        id: ID!
+        newname: String!
+        updatedreleaseyear: Int!
+        currentshowingstatus: Boolean
+    }
+
     type Mutation{
         adduser(input: adduserinp!): User
         addmovie(input: addmovieinp!): Movies
         updateuser(input: updateuser!): User!
+        updatemovie(input: updatemovie!): Movies
     }
 `;
 

@@ -70,6 +70,12 @@ const resolvers = {
             auto add the id field too.
             */
            MovieList.push(newmovie)
+
+           const dataToWrite = `MovieList = ${JSON.stringify(MovieList, null, 2)}\n\nmodule.exports = MovieList`;
+
+           const filepath = 'C:\\Users\\Public\\OneDrive\\GprahQL REST OData Technprojects\\techprojects\\schema\\MovieList.js'
+
+           fs.writeFileSync(filepath,dataToWrite);
            return newmovie
         },
 
@@ -106,7 +112,41 @@ const resolvers = {
             fs.writeFileSync(filePath, dataToWrite);
 
             return updateduser
+        },
+
+        //Doing the whole thing again byt this time for movie
+        updatemovie: (parent,args) => {
+            //take the arguments
+            const updatemovie = args.input;
+            let updatedmovie;
+            const movieid = Number(updatemovie.id);
+            
+            MovieList.forEach((movie) => {
+                if (movie.id === movieid) {
+                    if (updatemovie.newname) {
+                        movie.name = updatemovie.newname
+                    };
+                    if (updatemovie.updatedreleaseyear) {
+                        movie.releaseyear = updatemovie.updatedreleaseyear
+                    };
+                    if (updatemovie.currentshowingstatus) {
+                        movie.isintheatres = updatemovie.currentshowingstatus
+                    }
+
+                    updatedmovie = movie;
+                }
+
+                
+            });
+            //Now adding the necessary details and updating in the actual file
+            const dataToWrite = `MovieList = ${JSON.stringify(MovieList, null, 2)}\n\nmodule.exports = MovieList`;
+            const filepath = 'C:\\Users\\Public\\OneDrive\\GprahQL REST OData Technprojects\\techprojects\\schema\\MovieList.js'
+
+            fs.writeFileSync(filepath,dataToWrite);
+
+            return updatedmovie;
         }
+
     }
 }
 
