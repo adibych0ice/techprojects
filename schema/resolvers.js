@@ -1,10 +1,12 @@
 const UserList = require('./Generateddata')
 const _ = require("lodash");
 const MovieList = require('./MovieList');
-
+const dbconn = require('./dbconn')
 const fs = require('fs');
 const path = require('path');
 //const { argsToArgsConfig } = require('graphql/type/definition');
+const { DateTimeResolver } = require('graphql-scalars')
+
 const resolvers = {
     Query: {
         //User Resolver
@@ -26,8 +28,8 @@ const resolvers = {
             return mov
         },
 
-        fromdb: () =>{
-            
+        dbusers: async () =>{
+            return await dbconn.any('SELECT * FROM decistech.users LIMIT 50');
         }
     },
 

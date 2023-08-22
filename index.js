@@ -13,17 +13,7 @@ const server = new ApolloServer({typeDefs, resolvers})
 
 // Connecting to Postgres
 
-const postgres = require("pg-promise")();
 
-const dbconnection = {
-    host: 'localhost',
-    port:5432,
-    database: 'postgres',
-    user: 'postgres',
-    password: 'Tachyon_9667'
-}
-
-const postgresdb = postgres(dbconnection)
 
 server.listen().then(({ url }) => {
     console.log(`The API is running at: ${url}`);

@@ -1,8 +1,10 @@
 const { gql } = require("apollo-server");
 
-
+const {DateTimeResolver,DateTimeTypeDefinition} = require('graphql-scalars')
 
 const typeDefs = gql `
+
+    ${DateTimeTypeDefinition}
     type User{
         id: ID!
         name: String
@@ -19,7 +21,7 @@ const typeDefs = gql `
         name: String!
         email: String
         address: String
-        birthdate: 
+        birthdate: DateTime
     }
     type Query{
         users: [User!]!
