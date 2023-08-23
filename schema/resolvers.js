@@ -29,7 +29,7 @@ const resolvers = {
         },
 
         dbusers: async () =>{
-            return await dbconn.any('SELECT * FROM decistech.users LIMIT 50');
+            return await dbconn.any('SELECT * FROM decistech.users WHERE birthdate >= `1980-01-01` AND birthdate < `2001-01-01` LIMIT 50');
         }
     },
 
