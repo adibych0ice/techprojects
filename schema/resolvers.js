@@ -29,7 +29,16 @@ const resolvers = {
         },
 
         dbusers: async () =>{
-            return await dbconn.any('SELECT * FROM decistech.users WHERE birthdate >= `1980-01-01` AND birthdate < `2001-01-01` LIMIT 50');
+            try {
+                const query = `SELECT * FROM decistech.users WHERE birthdate >= '1980-01-01'AND birthdate < '1980-01-03'`;
+                const results = await dbconn.any(query);
+                console.log('Results: ',results);
+                return results
+            } catch (error) {
+                console.error('Error executing query:', error);
+                throw error;
+            }
+           // return await dbconn.any('SELECT * FROM decistech.users WHERE birthdate >= `1980-01-01` AND birthdate < `2001-01-01` LIMIT 50');
         }
     },
 
