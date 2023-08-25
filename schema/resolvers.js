@@ -30,7 +30,7 @@ const resolvers = {
 
         dbusers: async () =>{
             try {
-                const query = `SELECT * FROM decistech.users WHERE birthdate >= '1980-01-01'AND birthdate < '1980-01-03'`;
+                const query = `SELECT * FROM decistech.users WHERE birthdate >= '1980-01-01'AND birthdate < '1989-01-03'`;
                 const results = await dbconn.any(query);
                 console.log('Results: ',results);
                 return results

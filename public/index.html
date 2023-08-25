@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL Query Results</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/graphql-request/3.5.0/index.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Query Results</h1>
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Birth Date</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        // Replace this with your GraphQL query
+        const query = `
+        query UsersfromDB{
+            dbusers{
+                id
+                name
+                email
+                birthdate
+            }
+        }
+        
+        
+        `;
+
+        // Replace this with the endpoint of your GraphQL server
+        const endpoint = 'http://localhost:4000';
+
+        const client = new GraphQLClient.GraphQLClient(endpoint);
+
+        client.request(query).then(data => {
+            const table = document.getElementById('resultsTable').getElementsByTagName('tbody')[0];
+            console.log('Received data:', JSON.stringify(data));
+            data.dbusers.forEach(user => {
+                const row = table.insertRow();
+                row.insertCell(0).innerHTML = user.id;
+                row.insertCell(1).innerHTML = user.name;
+                row.insertCell(2).innerHTML = user.email;
+                row.insertCell(3).innerHTML = user.birthdate;
+                
+            });
+        }).catch(error => {
+            console.error('Error: ',error);
+        });
+    </script>
+</body>
+</html>

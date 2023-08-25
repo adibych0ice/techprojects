@@ -8,7 +8,14 @@ const { typeDefs } = require('./schema/typeDefs.js');
 const { resolvers } = require('./schema/resolvers.js')
 // The resolvers define how ApolloServer is supposed to even use that type definitions 
 
-const server = new ApolloServer({typeDefs, resolvers})
+const server = new ApolloServer({
+    typeDefs, 
+    resolvers,  
+    cors: {
+    origin: '*', // Allow all origins
+    credentials: true,
+  },
+})
 //The Apollo Server instance must have typeDefs (which is the schema definition) and resolvers(that tell Apollo Server what to do with the Schema Defs.)
 
 // Connecting to Postgres
