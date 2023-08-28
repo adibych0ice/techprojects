@@ -25,7 +25,9 @@ function DisplayData() {
     }
 
     return <div>{data && data.map(() => {
-        return <div><h1>Name: {user.name}</h1> </div>
+        return <div>
+            <h1>Name: {user.name}</h1> 
+            </div>
     })}</div>;
 }
 

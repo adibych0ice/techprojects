@@ -9,7 +9,7 @@ const { DateTimeResolver } = require('graphql-scalars')
 
 const resolvers = {
     Query: {
-        //User Resolver
+        //GeneratedData User Resolver
         users: ()=> {
             return UserList;
         },
@@ -27,10 +27,10 @@ const resolvers = {
             const mov = _.find(MovieList,{name:String(name)})
             return mov
         },
-
+        //From the DB
         dbusers: async () =>{
             try {
-                const query = `SELECT * FROM decistech.users WHERE birthdate >= '1980-01-01'AND birthdate < '1989-01-03'`;
+                const query = `SELECT * FROM decistech.users LIMIT 100`;
                 const results = await dbconn.any(query);
                 console.log('Results: ',results);
                 return results
@@ -39,6 +39,19 @@ const resolvers = {
                 throw error;
             }
            // return await dbconn.any('SELECT * FROM decistech.users WHERE birthdate >= `1980-01-01` AND birthdate < `2001-01-01` LIMIT 50');
+        },
+
+        //Now querying the DB based on criteria
+
+        birthdateusers: async (parent,args) => {
+            try {
+                const query = `SELECT * FROM decistech.users WHERE birthdate = $1`;
+                const results = await dbconn.any(query,[args.birthdate]);
+                return results
+            } catch (error) {
+                console.error('Error fetching users by birthdate: ', error);
+                return []
+            }
         }
     },
 

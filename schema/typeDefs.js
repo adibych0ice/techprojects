@@ -31,6 +31,9 @@ const typeDefs = gql `
         movie(name: String!): Movies!
 
         dbusers: [dbuser!]!
+
+
+        birthdateusers(birthdate: String!): [dbuser!]
     }
 
     enum Nationality{

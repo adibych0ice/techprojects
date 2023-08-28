@@ -35,40 +35,8 @@
         <tbody>
         </tbody>
     </table>
-    <script>
-        // Replace this with your GraphQL query
-        const query = `
-        query UsersfromDB{
-            dbusers{
-                id
-                name
-                email
-                birthdate
-            }
-        }
-        
-        
-        `;
+    <script src="./../schema/client/apolloclient.js"></script> 
+    <script src="./../schema/client/fetchdata.js"></script>
 
-        // Replace this with the endpoint of your GraphQL server
-        const endpoint = 'http://localhost:4000';
-
-        const client = new GraphQLClient.GraphQLClient(endpoint);
-
-        client.request(query).then(data => {
-            const table = document.getElementById('resultsTable').getElementsByTagName('tbody')[0];
-            console.log('Received data:', JSON.stringify(data));
-            data.dbusers.forEach(user => {
-                const row = table.insertRow();
-                row.insertCell(0).innerHTML = user.id;
-                row.insertCell(1).innerHTML = user.name;
-                row.insertCell(2).innerHTML = user.email;
-                row.insertCell(3).innerHTML = user.birthdate;
-                
-            });
-        }).catch(error => {
-            console.error('Error: ',error);
-        });
-    </script>
 </body>
 </html>
