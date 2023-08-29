@@ -42,10 +42,10 @@ const resolvers = {
         },
 
         //Now querying the DB based on criteria
-
+        //Be able to query any attribute that will be provided in the config file
         birthdateusers: async (parent,args) => {
             try {
-                const query = `SELECT * FROM decistech.users WHERE birthdate = $1`;
+                const query = `SELECT * FROM decistech.users WHERE birthdate = $1`;//The WHERE clause needs to 
                 const results = await dbconn.any(query,[args.birthdate]);
                 return results
             } catch (error) {
